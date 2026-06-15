@@ -3358,3 +3358,102 @@ body > *:last-child{
   .vote-how-card{padding:24px!important}
   .vote-how-card h2{font-size:34px!important}
 }
+
+
+/* Vote mockup v2.1: match Bans spacing/container rhythm exactly */
+.site-header{
+  padding-top:14px!important;
+  padding-bottom:14px!important;
+}
+
+.header-inner{
+  width:min(1180px, calc(100% - 44px))!important;
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Vote middle content uses the same outer width math as Bans content */
+.vote-middle-shell,
+.vote-middle-section{
+  width:min(1180px, calc(100% - 44px))!important;
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+
+/* Header was visually too high; restore the same top breathing room used by Bans */
+.vote-middle-shell{
+  padding-top:58px!important;
+}
+
+/* Align all inner cards to the same content width */
+.vote-middle-hero,
+.vote-link-grid,
+.vote-how-card{
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+.vote-link-grid{
+  grid-template-columns:repeat(3, minmax(0, 1fr))!important;
+  align-items:stretch!important;
+}
+
+.vote-link-card{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+}
+
+.section-heading{
+  width:100%!important;
+  max-width:100%!important;
+}
+
+@media(max-width:980px){
+  .site-header{
+    padding:10px 14px!important;
+  }
+
+  .header-inner{
+    width:100%!important;
+    max-width:100%!important;
+  }
+
+  .vote-middle-shell,
+  .vote-middle-section{
+    width:100%!important;
+    max-width:100%!important;
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+
+  .vote-middle-shell{
+    padding-top:34px!important;
+  }
+
+  .vote-link-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:560px){
+  .site-header{
+    padding:8px 10px!important;
+  }
+
+  .vote-middle-shell,
+  .vote-middle-section{
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+
+  .vote-middle-shell{
+    padding-top:28px!important;
+  }
+}
