@@ -3360,20 +3360,7 @@ body > *:last-child{
 }
 
 
-/* Vote mockup v2.1: match Bans spacing/container rhythm exactly */
-.site-header{
-  padding-top:14px!important;
-  padding-bottom:14px!important;
-}
-
-.header-inner{
-  width:min(1180px, calc(100% - 44px))!important;
-  max-width:1180px!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-
-/* Vote middle content uses the same outer width math as Bans content */
+/* Vote mockup v2.2: middle alignment only; exact Bans nav/footer untouched */
 .vote-middle-shell,
 .vote-middle-section{
   width:min(1180px, calc(100% - 44px))!important;
@@ -3385,15 +3372,14 @@ body > *:last-child{
   box-sizing:border-box!important;
 }
 
-/* Header was visually too high; restore the same top breathing room used by Bans */
 .vote-middle-shell{
-  padding-top:58px!important;
+  padding-top:44px!important;
 }
 
-/* Align all inner cards to the same content width */
 .vote-middle-hero,
 .vote-link-grid,
-.vote-how-card{
+.vote-how-card,
+.vote-middle-section > .section-heading{
   width:100%!important;
   max-width:100%!important;
   box-sizing:border-box!important;
@@ -3410,21 +3396,7 @@ body > *:last-child{
   min-width:0!important;
 }
 
-.section-heading{
-  width:100%!important;
-  max-width:100%!important;
-}
-
 @media(max-width:980px){
-  .site-header{
-    padding:10px 14px!important;
-  }
-
-  .header-inner{
-    width:100%!important;
-    max-width:100%!important;
-  }
-
   .vote-middle-shell,
   .vote-middle-section{
     width:100%!important;
@@ -3434,7 +3406,7 @@ body > *:last-child{
   }
 
   .vote-middle-shell{
-    padding-top:34px!important;
+    padding-top:24px!important;
   }
 
   .vote-link-grid{
@@ -3443,17 +3415,9 @@ body > *:last-child{
 }
 
 @media(max-width:560px){
-  .site-header{
-    padding:8px 10px!important;
-  }
-
   .vote-middle-shell,
   .vote-middle-section{
     padding-left:10px!important;
     padding-right:10px!important;
-  }
-
-  .vote-middle-shell{
-    padding-top:28px!important;
   }
 }
