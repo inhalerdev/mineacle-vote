@@ -13,27 +13,23 @@ function mineacle_config(): array {
             'bans' => getenv('BANS_URL') ?: 'https://bans.mineacle.net',
             'server_online' => strtolower((string) getenv('SERVER_ONLINE')) !== 'false',
         ],
-
         'vote_sites' => [
-            [
-                'name' => 'Minecraft Server List',
-                'url' => getenv('VOTE_SITE_1') ?: 'https://minecraft-server-list.com/server/520903/',
-                'reward' => 'Vote Key',
-            ],
-            [
-                'name' => 'MinecraftServers.org',
-                'url' => getenv('VOTE_SITE_2') ?: 'https://minecraftservers.org/server/688676',
-                'reward' => 'Vote Key',
-            ],
-            [
-                'name' => 'Minecraft-MP',
-                'url' => getenv('VOTE_SITE_3') ?: 'https://minecraft-mp.com/server-s359207',
-                'reward' => 'Vote Key',
-            ],
+            ['name' => 'Minecraft Server List', 'url' => getenv('VOTE_SITE_1') ?: 'https://minecraft-server-list.com/server/520903/', 'reward' => 'Vote Key'],
+            ['name' => 'MinecraftServers.org', 'url' => getenv('VOTE_SITE_2') ?: 'https://minecraftservers.org/server/688676', 'reward' => 'Vote Key'],
+            ['name' => 'Minecraft-MP', 'url' => getenv('VOTE_SITE_3') ?: 'https://minecraft-mp.com/server-s359207', 'reward' => 'Vote Key'],
         ],
     ];
 }
 
 function h(mixed $value): string {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
+
+function mineacle_security_headers(bool $json = false): void {
+    header('X-Frame-Options: SAMEORIGIN');
+    header('X-Content-Type-Options: nosniff');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    if ($json) {
+        header('Content-Type: application/json; charset=utf-8');
+    }
 }

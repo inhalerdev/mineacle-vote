@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/config.php';
 
-function mineacle_head(string $title, string $description = 'Mineacle Network'): void {
+function mineacle_page_head(string $title): void {
+    mineacle_security_headers(false);
     $config = mineacle_config();
     $name = h($config['site']['name'] ?? 'Mineacle Network');
 
@@ -11,14 +12,12 @@ function mineacle_head(string $title, string $description = 'Mineacle Network'):
     echo '<html lang="en">';
     echo '<head>';
     echo '<meta charset="utf-8">';
-    echo '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">';
-    echo '<meta name="description" content="' . h($description) . '">';
-    echo '<title>' . h($title) . '</title>';
-    echo '<link rel="icon" href="assets/mineacle-square-logo.png?v=votemock1.0">';
-    echo '<link rel="stylesheet" href="assets/styles.css?v=votemock1.0">';
+    echo '<meta name="viewport" content="width=device-width,initial-scale=1">';
+    echo '<title>' . h($title) . ' | ' . $name . '</title>';
+    echo '<meta name="description" content="Mineacle public bans portal">';
+    echo '<link rel="icon" type="image/png" href="assets/mineacle-square-logo.png?v=votefull2.0">';
+    echo '<link rel="stylesheet" href="assets/styles.css?v=votefull2.0">';
     echo '</head>';
-    echo '<body class="mineacle-page">';
-    echo '<main class="site-main">';
 }
 
 function mineacle_header(string $active = 'vote'): void {
@@ -30,12 +29,12 @@ function mineacle_header(string $active = 'vote'): void {
     $online = (($config['site']['server_online'] ?? true) === true);
 
     echo '<header class="site-header" id="siteHeader"><div class="header-inner">';
-    echo '<div class="header-logo-link header-logo-static" aria-label="Mineacle Vote"><img src="assets/mineacle-square-logo.png?v=votemock1.0" alt="Mineacle"></div>';
+    echo '<div class="header-logo-link header-logo-static" aria-label="Mineacle vote"><img src="assets/mineacle-square-logo.png?v=votefull2.0" alt="Mineacle"></div>';
     echo '<button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mainNav" aria-expanded="false"><span></span><span></span><span></span></button>';
     echo '<nav class="main-nav" id="mainNav" aria-label="Primary navigation">';
-    echo '<a class="' . ($active === 'vote' ? 'active' : '') . '" href="' . $vote . '"><img class="nav-icon icon-white" src="assets/vote.svg?v=votemock1.0" alt=""><span>Vote</span></a>';
-    echo '<a class="' . ($active === 'bans' ? 'active' : '') . '" href="' . $bans . '"><img class="nav-icon icon-white" src="assets/hammer.svg?v=votemock1.0" alt=""><span>Bans</span></a>';
-    echo '<a class="store-link ' . ($active === 'store' ? 'active' : '') . '" href="' . $store . '"><img class="nav-icon icon-white" src="assets/store.svg?v=votemock1.0" alt=""><span>Store</span></a>';
+    echo '<a class="' . ($active === 'vote' ? 'active' : '') . '" href="' . $vote . '"><img class="nav-icon icon-white" src="assets/vote.svg?v=votefull2.0" alt=""><span>Vote</span></a>';
+    echo '<a class="' . ($active === 'bans' ? 'active' : '') . '" href="' . $bans . '"><img class="nav-icon icon-white" src="assets/hammer.svg?v=votefull2.0" alt=""><span>Bans</span></a>';
+    echo '<a class="store-link ' . ($active === 'store' ? 'active' : '') . '" href="' . $store . '"><img class="nav-icon icon-white" src="assets/store.svg?v=votefull2.0" alt=""><span>Store</span></a>';
     echo '</nav>';
     echo '<button class="copy-ip-button" type="button" data-copy-ip="' . $ip . '" aria-label="Copy server IP"><span class="status-dot ' . ($online ? 'online' : 'offline') . '"></span><span>Copy IP</span></button>';
     echo '</div></header>';
@@ -46,21 +45,20 @@ function mineacle_footer(): void {
     $discord = h((string) ($config['site']['discord'] ?? 'https://discord.gg/VwbwWftefM'));
     $x = h((string) ($config['site']['x'] ?? 'https://x.com/mineaclenetwork'));
 
-    echo '</main>';
     echo '<footer class="site-footer redesigned-footer">';
     echo '<div class="footer-inner">';
-    echo '<div class="footer-brand"><img class="footer-brand-logo" src="assets/mineacle-main-logo.png?v=votemock1.0" alt="Mineacle Network"></div>';
+    echo '<div class="footer-brand"><img class="footer-brand-logo" src="assets/mineacle-main-logo.png?v=votefull2.0" alt="Mineacle Network"></div>';
     echo '<div class="footer-legal">';
     echo '<p class="footer-copy">Copyright © Mineacle Network 2026. All Rights Reserved.</p>';
     echo '<p class="footer-disclaimer">We are not affiliated with Microsoft or Mojang AB.</p>';
     echo '<div class="footer-socials" aria-label="Mineacle social links">';
-    echo '<a class="footer-social-link" href="' . $discord . '" target="_blank" rel="noopener" aria-label="Join Mineacle Discord"><img src="assets/discord.svg?v=votemock1.0" alt=""></a>';
-    echo '<a class="footer-social-link" href="' . $x . '" target="_blank" rel="noopener" aria-label="Follow Mineacle on X"><img src="assets/x.svg?v=votemock1.0" alt=""></a>';
+    echo '<a class="footer-social-link" href="' . $discord . '" target="_blank" rel="noopener" aria-label="Join Mineacle Discord"><img src="assets/discord.svg?v=votefull2.0" alt=""></a>';
+    echo '<a class="footer-social-link" href="' . $x . '" target="_blank" rel="noopener" aria-label="Follow Mineacle on X"><img src="assets/x.svg?v=votefull2.0" alt=""></a>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
     echo '</footer>';
+
     echo '<div class="mineacle-toast" id="toast" role="status" aria-live="polite"><div class="toast-mark">✓</div><div><small>Mineacle Network</small><strong>Server IP copied</strong><span>Join with <b id="toastValue">mineacle.net</b></span></div></div>';
-    echo '<script src="assets/main.js?v=votemock1.0"></script>';
-    echo '</body></html>';
+    echo '<script src="assets/main.js?v=votefull2.0"></script>';
 }
