@@ -23,7 +23,7 @@ mineacle_header('vote');
       </div>
     </div>
     <div class="vote-middle-panel">
-      <img class="vote-middle-logo" src="assets/mineacle-main-logo.png?v=votefull2.4.1" alt="Mineacle Network">
+      <img class="vote-middle-logo" src="assets/mineacle-main-logo.png?v=votefull2.5" alt="Mineacle Network">
       <div class="vote-reward-card">
         <span>Daily Reward</span>
         <strong>Vote Key</strong>
